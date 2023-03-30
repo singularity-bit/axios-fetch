@@ -1,13 +1,13 @@
 import React from 'react';
-import Input from '../../atoms/Input/Input';
-import Button from '../../atoms/Button/Button';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const SearchBar = () => {
   return (
-    <div className="container">
+    <>
       <Input />
       <Button label="Press me" className="button" />
-    </div>
+    </>
   );
 };
 
