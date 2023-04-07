@@ -16,7 +16,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-You can start editing components by modifying `components/**/*.js`. The components are created using Atomic Design methodology. Please check [Atomic Design documentation](https://bradfrost.com/blog/post/atomic-web-design/) for more information.
+You can start editing components by modifying `components/**/*.js`. The components are created using Atomic Design methodology. Please check [Atomic Design Documentation](https://bradfrost.com/blog/post/atomic-web-design/) for more information.
+
+For styling in Next.js please check [CSS Modules](https://beta.nextjs.org/docs/styling/css-modules) and [Global Styles](https://beta.nextjs.org/docs/styling/global-styles)
 
 ## Learn More
 
