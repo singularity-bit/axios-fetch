@@ -1,11 +1,35 @@
-import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import Header from '../components/organisms/Header';
+import Head from "next/head";
+import { getPosts, updatePost } from "../funcs/posts";
+import { Inter } from "next/font/google";
+import Header from "../components/organisms/Header";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useLoading } from "@/hooks/useLoading";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [loading]=useLoading()
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getPosts();
+      setPosts(posts);
+    };
+    fetchPosts();
+  }, []);
+
+  const handleOnEditPost=async ()=>{
+    const newData={
+      title: 'We just edited this one',
+      body: 'We just edited this ones body',
+    }
+    await updatePost(posts[0].id,newData)
+  }
+
   return (
+    loading ??
     <>
       <Head>
         <title>App Name Here</title>
@@ -15,7 +39,15 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-        <h1>Hello from React!</h1>
+        <p>Here is a list of posts</p>
+       {posts && <button onClick={handleOnEditPost}>Click me  to edit first post</button>}
+        <ul>
+          {posts.slice(0, 10).map((post, index) => (
+            <li key={post.id}>
+              <Link href={`/posts/${post.id}`} >{post.title}</Link>
+            </li>
+          ))}
+        </ul>
       </main>
     </>
   );
